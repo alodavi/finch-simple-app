@@ -1,24 +1,13 @@
 import io.circe.Json
-import io.finch._
-import models.{Locale, Message, Time}
-import org.scalatest.{FlatSpec, Matchers}
-import io.finch.circe._
 import io.circe.generic.auto._
 import io.circe.syntax._
-import services.TimeService
+import io.finch._
+import io.finch.circe._
+import models.{Locale, Time}
+import org.scalatest.{FlatSpec, Matchers}
+import Main.{time, timeService}
 
 class TimeSpec extends FlatSpec with Matchers {
-
-  import Main._
-
-  val timeServiceInstance = new TimeService
-
-  behavior of "the hello endpoint"
-
-  it should "get 'Hello, world!'" in {
-    helloWorld(Input.get("/hello")).awaitValueUnsafe() shouldBe Some(
-      Message("Hello, world!"))
-  }
 
   behavior of "the time endpoint"
 
@@ -31,7 +20,7 @@ class TimeSpec extends FlatSpec with Matchers {
     val res = time(input)
     res.awaitValueUnsafe() shouldBe Some(
       Time(Locale("de", "DE"),
-           timeServiceInstance.currentTime(new java.util.Locale("de", "DE"))))
+           timeService.currentTime(new java.util.Locale("de", "DE"))))
   }
 
 }
