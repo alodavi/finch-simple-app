@@ -1,4 +1,4 @@
-#Finch-simple-app
+# Finch-simple-app
 
 This is an app to get started using Finch. 
 
