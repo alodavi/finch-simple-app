@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/alodavi/finch-simple-app.svg?branch=master)](https://travis-ci.com/alodavi/finch-simple-app)
 # Finch-simple-app
 
 This is an app to get started using Finch. 
