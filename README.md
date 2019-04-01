@@ -49,7 +49,6 @@ Example response:
 ## TODO
 
 - Fix logging
-- Add CI with travis
 - Deploy to Heroku
 - Add example with database
 - Add autoformatting with scalafmt 

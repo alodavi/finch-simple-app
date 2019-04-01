@@ -1,39 +1,23 @@
+import cats.effect.IO
 import com.twitter.app.Flag
 import com.twitter.finagle.Http
-import com.twitter.util.Await
-import io.finch._
-import io.finch.circe._
-import io.finch.syntax._
-import io.circe.generic.auto._
-import models.{Locale, Message, Time}
-import services.{HelloWorldService, TimeService}
 import com.twitter.server.TwitterServer
-import com.twitter.util.logging.Logger
+import com.twitter.util.Await
+
+import scala.concurrent.ExecutionContext
 
 object Main extends TwitterServer {
 
   private val port: Flag[Int] = flag("port", 8081, "TCP port for HTTP server")
-  private val logging = Logger("finch-example-new")
-
-  val helloWorldService = new HelloWorldService
-  val timeService = new TimeService
-
-  val helloWorld: Endpoint[Message] = get("hello") {
-    helloWorldService.getMessage().map(Ok)
-  }
-
-  val time: Endpoint[Time] =
-    post("time" :: jsonBody[Locale]) { l: Locale =>
-      timeService.getCurrentTime(l).map(Ok)
-    }
-
-  val api = (helloWorld :+: time).handle {
-    case e: Exception => BadRequest(e)
-  }
+  implicit val ctx = IO.contextShift(ExecutionContext.global)
 
   def main(): Unit = {
-    logging.info(s"Serving the application on port ${port()}")
+    //  private val logging = Logger("finch-example-new")
+    //   logging.info(s"Serving the application on port ${port()}")
+    println(s"Serving the application on port ${port()}")
 
-    Await.ready(Http.server.serve(":8081", api.toService))
+    val app = new App()
+    Await.ready(Http.server.serve(":8081", app.toService))
+
   }
 }

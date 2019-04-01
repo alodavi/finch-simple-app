@@ -1,3 +1,4 @@
+import cats.effect.IO
 import io.circe.Json
 import io.circe.generic.auto._
 import io.circe.syntax._
@@ -5,9 +6,8 @@ import io.finch._
 import io.finch.circe._
 import models.{Locale, Time}
 import org.scalatest.{FlatSpec, Matchers}
-import Main.{time, timeService}
 
-class TimeSpec extends FlatSpec with Matchers {
+class TimeSpec extends FlatSpec with Matchers with TestHelper {
 
   behavior of "the time endpoint"
 
@@ -17,10 +17,10 @@ class TimeSpec extends FlatSpec with Matchers {
     val input = Input
       .post("/time")
       .withBody[Application.Json](locale)
-    val res = time(input)
+    val res = app.time(input)
     res.awaitValueUnsafe() shouldBe Some(
       Time(Locale("de", "DE"),
-           timeService.currentTime(new java.util.Locale("de", "DE"))))
+           app.timeService.currentTime(new java.util.Locale("de", "DE"))))
   }
 
 }
