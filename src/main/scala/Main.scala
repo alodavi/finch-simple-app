@@ -5,10 +5,12 @@ import com.twitter.server.TwitterServer
 import com.twitter.util.Await
 
 import scala.concurrent.ExecutionContext
+import scala.util.Properties
 
 object Main extends TwitterServer {
 
-  private val port: Flag[Int] = flag("port", 8081, "TCP port for HTTP server")
+  private val port8081 = Properties.envOrElse("PORT", "8081").toInt
+  private val port: Flag[Int] = flag("port", port8081, "TCP port for HTTP server")
   implicit val ctx = IO.contextShift(ExecutionContext.global)
 
   def main(): Unit = {
