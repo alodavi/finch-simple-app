@@ -1,6 +1,6 @@
 package services
 
-import com.twitter.util.Future
+import cats.effect.IO
 import models.{Locale, Time}
 
 class TimeService {
@@ -8,8 +8,8 @@ class TimeService {
   def currentTime(l: java.util.Locale): String =
     java.util.Calendar.getInstance(l).getTime.toString
 
-  def getCurrentTime(locale: Locale): Future[Time] = {
-    Future.value(
+  def getCurrentTime(locale: Locale): IO[Time] = {
+    IO.pure(
       Time(locale,
            currentTime(new java.util.Locale(locale.language, locale.country))))
   }

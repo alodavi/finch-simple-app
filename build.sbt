@@ -7,6 +7,9 @@ scalaVersion := "2.12.8"
 lazy val finchVersion = "0.27.0"
 lazy val circeVersion = "0.9.0"
 lazy val twitterServerVersion = "19.1.0"
+lazy val doobieVersion = "0.6.0"
+
+scalacOptions += "-Ypartial-unification" // 2.11.9+
 
 libraryDependencies ++= Seq(
   "com.github.finagle" %% "finchx-core" % finchVersion,
@@ -15,6 +18,9 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-parser" % circeVersion,
   "com.twitter" %% "twitter-server" % twitterServerVersion,
   "org.scalatest" % "scalatest_2.12" % "3.0.5" % "test",
+  "org.tpolecat" %% "doobie-core"     % doobieVersion,
+  "org.tpolecat" %% "doobie-postgres" % doobieVersion,
+  "org.tpolecat" %% "doobie-specs2"   % doobieVersion
 )
 
 addCompilerPlugin(

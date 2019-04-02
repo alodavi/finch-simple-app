@@ -1,13 +1,13 @@
 package services
 
-import com.twitter.util.Future
+import cats.effect.IO
 import models.Message
 
 class HelloWorldService {
 
   val message = Message("Hello, world!")
 
-  def getMessage(): Future[Message] = {
-    Future.value(message)
+  def getMessage(): IO[Message] = {
+    IO.pure(message)
   }
 }
