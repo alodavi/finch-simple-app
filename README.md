@@ -50,5 +50,4 @@ Example response:
 
 - Fix logging
 - Deploy to Heroku
-- Add example with database
-- Add autoformatting with scalafmt 
+- Add test for example with database

@@ -5,10 +5,12 @@ import doobie.implicits._
 import cats._
 import cats.effect._
 import cats.implicits._
+import models.Country
+
 import scala.concurrent.ExecutionContext
 
 
-class DoobieService {
+class CountryService {
 
 
   // We need a ContextShift[IO] before we can construct a Transactor[IO]. The passed ExecutionContext
@@ -24,14 +26,6 @@ class DoobieService {
     "password"                       // password
   )
 
-  val program1: doobie.ConnectionIO[Int] = 42.pure[ConnectionIO]
-
-  val io: IO[Int] = program1.transact(xa)
-
-  val program2 = sql"select 42".query[Int].unique
-
-  val io2 = program2.transact(xa)
-
-  val countries: IO[List[String]] = sql"select name from country".query[String].to[List].transact(xa)
+  val countries: IO[List[Country]] = sql"select code, name, population, gnp from country".query[Country].to[List].transact(xa)
 
 }
