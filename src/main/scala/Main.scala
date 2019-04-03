@@ -20,7 +20,7 @@ object Main extends TwitterServer {
     println(s"Serving the application on port ${port()}")
 
     val app = new App()
-    Await.ready(Http.server.serve(":8081", app.toService))
+    Await.ready(Http.server.serve(":" + port8081, app.toService))
 
   }
 }
