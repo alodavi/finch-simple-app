@@ -28,7 +28,7 @@ To run the tests:
 ```$xslt
 sbt test
 ```
-For the moment it has 2 endpoints:
+For the moment it has these endpoints:
 
 ### /hello
 
