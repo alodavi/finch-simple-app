@@ -1,4 +1,3 @@
-import cats.effect.IO
 import doobie.util.transactor.Transactor
 import doobie.scalatest._
 import models.Country
@@ -17,7 +16,7 @@ class AnalysisTestScalaCheck extends FunSuite with Matchers with IOChecker {
 
   val transactor = Transactor.fromDriverManager[IO](
     "org.postgresql.Driver",
-    "jdbc:postgresql:world",
+    "jdbc:postgresql:worldtest",
     "postgres",
     "password"
   )

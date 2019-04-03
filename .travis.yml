@@ -3,5 +3,14 @@ scala:
   - 2.12.8
 jdk:
   - oraclejdk8
+services:
+  - postgresql
+before_script:
+  - curl -O https://raw.githubusercontent.com/tpolecat/doobie/series/0.5.x/world.sql
+  - psql -c 'create user postgres createdb'
+  - psql -c 'create database world;' -U postgres
+  - psql -c '\i world.sql' -d world -U postgres
+  - psql -c 'create database worldtest;' -U postgres
+  - psql -c '\i world.sql' -d worldtest -U postgres
 
 script: sbt test
