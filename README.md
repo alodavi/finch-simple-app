@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/alodavi/finch-simple-app.svg?branch=master)](https://travis-ci.com/alodavi/finch-simple-app)
 # Finch-simple-app
 
-This is an app to get started using Finch. 
+This is an app to get started using Finch. This app has been configured to run on Heroku: check https://finch-simple-app.herokuapp.com/hello .
 
 ## Usage
 To run the app locally, type on the command line:
@@ -49,5 +49,4 @@ Example response:
 ## TODO
 
 - Fix logging
-- Deploy to Heroku
 - Add test for example with database
