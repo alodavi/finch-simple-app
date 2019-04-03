@@ -20,7 +20,8 @@ libraryDependencies ++= Seq(
   "org.scalatest" % "scalatest_2.12" % "3.0.5" % "test",
   "org.tpolecat" %% "doobie-core" % doobieVersion,
   "org.tpolecat" %% "doobie-postgres" % doobieVersion,
-  "org.tpolecat" %% "doobie-specs2" % doobieVersion
+  "org.tpolecat" %% "doobie-specs2" % doobieVersion,
+  "org.tpolecat" %% "doobie-scalatest" % doobieVersion,
 )
 
 addCompilerPlugin(
