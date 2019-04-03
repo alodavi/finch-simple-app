@@ -18,9 +18,9 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-parser" % circeVersion,
   "com.twitter" %% "twitter-server" % twitterServerVersion,
   "org.scalatest" % "scalatest_2.12" % "3.0.5" % "test",
-  "org.tpolecat" %% "doobie-core"     % doobieVersion,
+  "org.tpolecat" %% "doobie-core" % doobieVersion,
   "org.tpolecat" %% "doobie-postgres" % doobieVersion,
-  "org.tpolecat" %% "doobie-specs2"   % doobieVersion
+  "org.tpolecat" %% "doobie-specs2" % doobieVersion
 )
 
 addCompilerPlugin(

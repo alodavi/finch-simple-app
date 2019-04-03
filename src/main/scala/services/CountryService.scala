@@ -9,9 +9,7 @@ import models.Country
 
 import scala.concurrent.ExecutionContext
 
-
 class CountryService {
-
 
   // We need a ContextShift[IO] before we can construct a Transactor[IO]. The passed ExecutionContext
   // is where nonblocking operations will be executed.
@@ -22,10 +20,14 @@ class CountryService {
   val xa = Transactor.fromDriverManager[IO](
     "org.postgresql.Driver", // driver classname
     "jdbc:postgresql:world", // connect URL (driver-specific)
-    "postgres",              // user
-    "password"                       // password
+    "postgres", // user
+    "password" // password
   )
 
-  val countries: IO[List[Country]] = sql"select code, name, population, gnp from country".query[Country].to[List].transact(xa)
+  val countries: IO[List[Country]] =
+    sql"select code, name, population, gnp from country"
+      .query[Country]
+      .to[List]
+      .transact(xa)
 
 }

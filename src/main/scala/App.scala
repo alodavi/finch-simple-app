@@ -24,7 +24,7 @@ class App(implicit S: ContextShift[IO]) extends Endpoint.Module[IO] {
     }
 
   val countries: Endpoint[IO, List[Country]] = get("countries") {
-      countryService.countries.map(Ok)
+    countryService.countries.map(Ok)
   }
 
   val api = (helloWorld :+: time :+: countries).handle {
