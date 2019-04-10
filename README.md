@@ -75,6 +75,3 @@ Example response (very long list):
 [{"code":"AFG","name":"Afghanistan","pop":22720000,"gnp":5976.00},{"code":"NLD","name":"Netherlands","pop":15864000,"gnp":371362.00},{"code":"ANT","name":"Netherlands Antilles","pop":217000,"gnp":1941.00}, ...]
 ```
 
-## TODO
-
-- Fix logging

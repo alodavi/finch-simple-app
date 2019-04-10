@@ -22,6 +22,7 @@ libraryDependencies ++= Seq(
   "org.tpolecat" %% "doobie-postgres" % doobieVersion,
   "org.tpolecat" %% "doobie-specs2" % doobieVersion,
   "org.tpolecat" %% "doobie-scalatest" % doobieVersion,
+  "org.slf4j" % "slf4j-simple" % "1.7.12"
 )
 
 addCompilerPlugin(
